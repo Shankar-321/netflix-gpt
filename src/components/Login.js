@@ -6,6 +6,7 @@ import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import { USER_AVATAR, BG_IMAGE } from '../utils/constants';
 
 const Login = () => {
 
@@ -48,7 +49,7 @@ const Login = () => {
 
                     updateProfile(user, {
                         displayName: name.current.value,
-                        photoURL: "https://avatars.githubusercontent.com/u/136055062?v=4",
+                        photoURL: USER_AVATAR,
                     })
                         .then(() => {
                             // Profile updated!
@@ -59,8 +60,8 @@ const Login = () => {
                                     email: email,
                                     displayName: displayName,
                                     photoURL: photoURL
-                                }));
-                            navigate("/browse");
+                                })
+                            );
                         })
                         .catch((error) => {
                             setErrorMessage(error, message);
@@ -104,7 +105,7 @@ const Login = () => {
         <div>
             <Header />
             <div className='absolute'>
-                <img src="https://assets.nflxext.com/ffe/siteui/vlv3/c0b69670-89a3-48ca-877f-45ba7a60c16f/2642e08e-4202-490e-8e93-aff04881ee8a/IN-en-20240212-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+                <img src={BG_IMAGE}
                     alt='bg_image' />
             </div>
             <form
